@@ -2,6 +2,10 @@
 #include <iostream>
 #include <vector>
 
+void displayPerson(const Person &person) {
+  std::cout << "Person: " << person.m_Name << std::endl;
+}
+
 int main() {
   std::vector<Person> personList;
   /* Creates multiple copies
@@ -24,4 +28,9 @@ int main() {
   Person person2 = person1; // smae as => Person person2(person1)
   std::cout << "Person1: " << person1.m_Name << std::endl;
   std::cout << "Person2: " << person2.m_Name << std::endl;
+  displayPerson(person2);
+  const char *perP = "xyz";
+  Person per("abc");
+  // displayPerson(perP); // Implicit Type Conversion, char* -> Person
+  displayPerson(Person(perP)); // Explicit Type Conversion, char* -> Person
 }

@@ -3,6 +3,7 @@
 #include <new>
 #include <string>
 
+typedef unsigned short int AgeType;
 enum class EGender { Male, Female, Other };
 
 class Person {
@@ -35,10 +36,10 @@ public:
   // This also can be written as below, optimized version:
   */
 
-  Person(const std::string &name, unsigned short int age)
+  Person(const std::string &name, AgeType age)
       : m_Name(name), m_Age(age), m_Gender(EGender::Male) {} // Initializer list
 
-  Person(const std::string &name, unsigned short int age, EGender gender)
+  Person(const std::string &name, AgeType age, EGender gender)
       : Person(name, age) {
     m_Gender = gender;
   }
@@ -47,12 +48,20 @@ public:
   Person(const Person &p) { m_Name = "Copied name:" + p.m_Name; }
 
   explicit Person(const char *name) : m_Name(name) {}
+  AgeType getAge() const { return m_Age; }
+  void updateAge() const {
+    m_Age++;
+    m_Name = "";
+  }
+  void setX(int x) { this->x = x; }
+  Person &getPerson() { return *this; }
 
 public:
-  std::string m_Name;
-  unsigned short int m_Age;
+  mutable std::string m_Name;
+  mutable AgeType m_Age;
   EGender m_Gender;
   std::string m_MobileNumber;
   std::string m_Address;
+  int x;
 };
 #endif //__PERSON_H__
