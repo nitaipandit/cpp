@@ -26,4 +26,3 @@ int main() {
     std::cin >> arr[i];
   }
   removeduplicate(arr, n);
-}

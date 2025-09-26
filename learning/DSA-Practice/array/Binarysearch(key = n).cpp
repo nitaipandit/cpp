@@ -21,5 +21,5 @@ int main() {
   std::cout << "enter the search element:";
   std::cin >> t;
   int index = binarysearch(arr, n, t);
-  std::cout << "the number of " << t << " is " << index;
+  std::cout << "the number of " << t << " in index no. " << index;
 }
