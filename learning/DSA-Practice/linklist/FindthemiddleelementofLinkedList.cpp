@@ -1,4 +1,4 @@
-// Search for an element in Linked List
+// Find the middle element of Linked List
 #include <iostream>
 class Node {
 public:
@@ -13,7 +13,6 @@ class list {
 public:
   Node *head;
   Node *tail;
-
   list() { head = tail = NULL; }
   void push_front(int val) {
     Node *newnode = new Node(val);
@@ -24,17 +23,19 @@ public:
       head = newnode;
     }
   }
-  int search(int key) {
+
+  void find_mid() {
     Node *temp = head;
-    int ndx = 0;
+    int i, a = 0;
     while (temp != NULL) {
-      if (temp->data == key) {
-        return ndx;
-      }
+      a++;
       temp = temp->next;
-      ndx++;
     }
-    return -1;
+    Node *temp2 = head;
+    for (i = 0; i < a / 2; i++) {
+      temp2 = temp2->next;
+    }
+    std::cout << temp2->data << std::endl;
   }
 
   void print() {
@@ -45,12 +46,13 @@ public:
     }
   }
 };
+
 int main() {
   list ll;
   ll.push_front(10);
   ll.push_front(20);
   ll.push_front(30);
   ll.push_front(40);
-  ll.print();
-  std::cout << "\n" << ll.search(10) << std::endl;
+  ll.push_front(50);
+  ll.find_mid();
 }

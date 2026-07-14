@@ -1,4 +1,3 @@
-// Search for an element in Linked List
 #include <iostream>
 class Node {
 public:
@@ -13,8 +12,8 @@ class list {
 public:
   Node *head;
   Node *tail;
-
   list() { head = tail = NULL; }
+
   void push_front(int val) {
     Node *newnode = new Node(val);
     if (head == NULL) {
@@ -24,33 +23,31 @@ public:
       head = newnode;
     }
   }
-  int search(int key) {
+  void occurrence(int find) {
     Node *temp = head;
-    int ndx = 0;
+    int x = 0;
     while (temp != NULL) {
-      if (temp->data == key) {
-        return ndx;
+      if (find == temp->data) {
+        x++;
       }
       temp = temp->next;
-      ndx++;
     }
-    return -1;
+    std::cout << x << " times" << std::endl;
   }
-
-  void print() {
+  void display() {
     Node *temp = head;
-    while (temp != NULL) {
-      std::cout << temp->data << " ";
-      temp = temp->next;
+    while (head != NULL) {
+      std::cout << temp->data;
     }
+    temp = temp->next;
   }
 };
 int main() {
   list ll;
-  ll.push_front(10);
-  ll.push_front(20);
-  ll.push_front(30);
-  ll.push_front(40);
-  ll.print();
-  std::cout << "\n" << ll.search(10) << std::endl;
+  ll.push_front(2);
+  ll.push_front(3);
+  ll.push_front(4);
+  ll.push_front(2);
+  ll.push_front(2);
+  ll.occurrence(2);
 }

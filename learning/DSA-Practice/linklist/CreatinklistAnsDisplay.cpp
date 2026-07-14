@@ -1,5 +1,5 @@
-// Search for an element in Linked List
 #include <iostream>
+
 class Node {
 public:
   int data;
@@ -13,9 +13,8 @@ class list {
 public:
   Node *head;
   Node *tail;
-
   list() { head = tail = NULL; }
-  void push_front(int val) {
+  void pushfront(int val) {
     Node *newnode = new Node(val);
     if (head == NULL) {
       head = tail = newnode;
@@ -24,20 +23,8 @@ public:
       head = newnode;
     }
   }
-  int search(int key) {
-    Node *temp = head;
-    int ndx = 0;
-    while (temp != NULL) {
-      if (temp->data == key) {
-        return ndx;
-      }
-      temp = temp->next;
-      ndx++;
-    }
-    return -1;
-  }
 
-  void print() {
+  void display() {
     Node *temp = head;
     while (temp != NULL) {
       std::cout << temp->data << " ";
@@ -46,11 +33,12 @@ public:
   }
 };
 int main() {
-  list ll;
-  ll.push_front(10);
-  ll.push_front(20);
-  ll.push_front(30);
-  ll.push_front(40);
-  ll.print();
-  std::cout << "\n" << ll.search(10) << std::endl;
+  list l;
+  l.pushfront(1);
+  l.pushfront(2);
+  l.pushfront(3);
+  l.pushfront(4);
+  l.pushfront(5);
+  l.display();
+  std::cout << std::endl;
 }

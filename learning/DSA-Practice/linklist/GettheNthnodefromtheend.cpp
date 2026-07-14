@@ -1,4 +1,4 @@
-// Search for an element in Linked List
+// Get the Nth node from the end.
 #include <iostream>
 class Node {
 public:
@@ -13,8 +13,8 @@ class list {
 public:
   Node *head;
   Node *tail;
-
   list() { head = tail = NULL; }
+
   void push_front(int val) {
     Node *newnode = new Node(val);
     if (head == NULL) {
@@ -24,24 +24,15 @@ public:
       head = newnode;
     }
   }
-  int search(int key) {
+  void nthnode(int val) {
     Node *temp = head;
-    int ndx = 0;
     while (temp != NULL) {
-      if (temp->data == key) {
-        return ndx;
+      if (val == temp) {
+        std::cout << temp->data << " " std::endl;
+        return;
+      } else {
+        temp = temp->next;
       }
-      temp = temp->next;
-      ndx++;
-    }
-    return -1;
-  }
-
-  void print() {
-    Node *temp = head;
-    while (temp != NULL) {
-      std::cout << temp->data << " ";
-      temp = temp->next;
     }
   }
 };
@@ -51,6 +42,6 @@ int main() {
   ll.push_front(20);
   ll.push_front(30);
   ll.push_front(40);
-  ll.print();
-  std::cout << "\n" << ll.search(10) << std::endl;
+  ll.push_front(50);
+  ll.nthnode(2);
 }

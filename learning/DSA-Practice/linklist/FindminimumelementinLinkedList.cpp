@@ -1,4 +1,4 @@
-// Search for an element in Linked List
+// Find minimum element in Linked List
 #include <iostream>
 class Node {
 public:
@@ -13,8 +13,8 @@ class list {
 public:
   Node *head;
   Node *tail;
-
   list() { head = tail = NULL; }
+
   void push_front(int val) {
     Node *newnode = new Node(val);
     if (head == NULL) {
@@ -24,25 +24,17 @@ public:
       head = newnode;
     }
   }
-  int search(int key) {
+
+  void minimum() {
+    int min = __INT_MAX__;
     Node *temp = head;
-    int ndx = 0;
     while (temp != NULL) {
-      if (temp->data == key) {
-        return ndx;
+      if (min > temp->data) {
+        min = temp->data;
       }
       temp = temp->next;
-      ndx++;
     }
-    return -1;
-  }
-
-  void print() {
-    Node *temp = head;
-    while (temp != NULL) {
-      std::cout << temp->data << " ";
-      temp = temp->next;
-    }
+    std::cout << min << std::endl;
   }
 };
 int main() {
@@ -51,6 +43,6 @@ int main() {
   ll.push_front(20);
   ll.push_front(30);
   ll.push_front(40);
-  ll.print();
-  std::cout << "\n" << ll.search(10) << std::endl;
+  ll.push_front(50);
+  ll.minimum();
 }

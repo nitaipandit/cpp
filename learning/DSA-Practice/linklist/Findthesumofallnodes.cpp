@@ -1,5 +1,6 @@
-// Search for an element in Linked List
+// Find the sum of all nodes
 #include <iostream>
+
 class Node {
 public:
   int data;
@@ -13,8 +14,8 @@ class list {
 public:
   Node *head;
   Node *tail;
-
   list() { head = tail = NULL; }
+
   void push_front(int val) {
     Node *newnode = new Node(val);
     if (head == NULL) {
@@ -24,25 +25,23 @@ public:
       head = newnode;
     }
   }
-  int search(int key) {
-    Node *temp = head;
-    int ndx = 0;
-    while (temp != NULL) {
-      if (temp->data == key) {
-        return ndx;
-      }
-      temp = temp->next;
-      ndx++;
-    }
-    return -1;
-  }
 
-  void print() {
+  void printinfo() {
     Node *temp = head;
     while (temp != NULL) {
       std::cout << temp->data << " ";
       temp = temp->next;
     }
+    std::cout << std::endl;
+  }
+  void sum() {
+    int add = 0;
+    Node *temp = head;
+    while (temp != NULL) {
+      add = add + temp->data;
+      temp = temp->next;
+    }
+    std::cout << add << std::endl;
   }
 };
 int main() {
@@ -51,6 +50,7 @@ int main() {
   ll.push_front(20);
   ll.push_front(30);
   ll.push_front(40);
-  ll.print();
-  std::cout << "\n" << ll.search(10) << std::endl;
+  ll.push_front(50);
+  ll.printinfo();
+  ll.sum();
 }

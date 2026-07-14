@@ -1,4 +1,4 @@
-// Search for an element in Linked List
+// Remove duplicates from a sorted Linked List;
 #include <iostream>
 class Node {
 public:
@@ -13,7 +13,6 @@ class list {
 public:
   Node *head;
   Node *tail;
-
   list() { head = tail = NULL; }
   void push_front(int val) {
     Node *newnode = new Node(val);
@@ -24,20 +23,20 @@ public:
       head = newnode;
     }
   }
-  int search(int key) {
-    Node *temp = head;
-    int ndx = 0;
-    while (temp != NULL) {
-      if (temp->data == key) {
-        return ndx;
-      }
-      temp = temp->next;
-      ndx++;
-    }
-    return -1;
-  }
 
-  void print() {
+  void removedeblicate() {
+    Node *temp = head;
+    while (temp != NULL && temp->next != NULL) {
+      if (temp->data == temp->next->data) {
+        Node *Dublicate = temp->next;
+        temp->next = temp->next->next;
+        delete Dublicate;
+      } else {
+        temp = temp->next;
+      }
+    }
+  }
+  void display() {
     Node *temp = head;
     while (temp != NULL) {
       std::cout << temp->data << " ";
@@ -46,11 +45,11 @@ public:
   }
 };
 int main() {
-  list ll;
-  ll.push_front(10);
-  ll.push_front(20);
-  ll.push_front(30);
-  ll.push_front(40);
-  ll.print();
-  std::cout << "\n" << ll.search(10) << std::endl;
+  list l;
+  l.push_front(10);
+  l.push_front(20);
+  l.push_front(20);
+  l.push_front(30);
+  l.removedeblicate();
+  l.display();
 }
